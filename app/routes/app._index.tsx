@@ -46,7 +46,7 @@ export const action = async ({request}: ActionFunctionArgs) => {
       variables: {
         webPixel: {
           settings: {
-            "accountID": 'Account_ID_45466_this_is_as_per_toml'
+            "accountID": 'amazon_pixel'
           },
         },
       },

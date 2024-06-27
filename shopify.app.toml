@@ -12,7 +12,7 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_pixels,read_customer_events"
 
 [auth]
 redirect_urls = [ "https://shopify-example-app-if9z.onrender.com/api/auth" ]
@@ -22,7 +22,7 @@ api_version = "2024-04"
 
   [[webhooks.subscriptions]]
   topics = [ "app/uninstalled" ]
-  uri = "/webhooks"
+  uri = "https://shopify-example-app-if9z.onrender.com/webhooks"
 
 [pos]
 embedded = false

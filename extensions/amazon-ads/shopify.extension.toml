@@ -1,0 +1,16 @@
+name = "amazon-ads"
+type = "web_pixel_extension"
+
+
+runtime_context = "strict"
+
+[settings]
+type = "object"
+
+[settings.fields.accountID]
+name = "amazon_pixel"
+description = "Account ID"
+type = "single_line_text_field"
+validations =  [
+  { name = "min", value = "1" }
+]
