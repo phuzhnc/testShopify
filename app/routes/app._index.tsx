@@ -187,7 +187,7 @@ export default function Index() {
                   <>
                     <Text as="h3" variant="headingMd">
                       {" "}
-                      productCreate mutation
+                      productCreate mutation Response
                     </Text>
                     <Box
                       padding="400"
@@ -199,25 +199,7 @@ export default function Index() {
                     >
                       <pre style={{ margin: 0 }}>
                         <code>
-                          {JSON.stringify(actionData.product, null, 2)}
-                        </code>
-                      </pre>
-                    </Box>
-                    <Text as="h3" variant="headingMd">
-                      {" "}
-                      productVariantUpdate mutation
-                    </Text>
-                    <Box
-                      padding="400"
-                      background="bg-surface-active"
-                      borderWidth="025"
-                      borderRadius="200"
-                      borderColor="border"
-                      overflowX="scroll"
-                    >
-                      <pre style={{ margin: 0 }}>
-                        <code>
-                          {JSON.stringify(actionData.variant, null, 2)}
+                          {JSON.stringify(actionData, null, 2)}
                         </code>
                       </pre>
                     </Box>

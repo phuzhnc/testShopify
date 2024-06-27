@@ -3,7 +3,7 @@
 client_id = "fb0c5f7c233787318a57daa86514f86b"
 name = "test-web-pixel"
 handle = "test-web-pixel-5"
-application_url = "https://shopify.dev/apps/default-app-home"
+application_url = "https://shopify-example-app-if9z.onrender.com"
 embedded = true
 
 [build]
@@ -15,7 +15,7 @@ include_config_on_deploy = true
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://shopify-example-app-if9z.onrender.com/api/auth" ]
 
 [webhooks]
 api_version = "2024-04"
