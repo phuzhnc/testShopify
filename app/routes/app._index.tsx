@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
-import { useActionData, useNavigation, useSubmit } from "@remix-run/react";
+import {useEffect} from "react";
+import type {ActionFunctionArgs, LoaderFunctionArgs} from "@remix-run/node";
+import {json} from "@remix-run/node";
+import {useActionData, useNavigation, useSubmit} from "@remix-run/react";
 import {
   Page,
   Layout,
@@ -14,48 +14,43 @@ import {
   Link,
   InlineStack,
 } from "@shopify/polaris";
-import { TitleBar, useAppBridge } from "@shopify/app-bridge-react";
-import { authenticate } from "../shopify.server";
+import {TitleBar, useAppBridge} from "@shopify/app-bridge-react";
+import {authenticate} from "../shopify.server";
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({request}: LoaderFunctionArgs) => {
   await authenticate.admin(request);
 
   return null;
 };
 
-export const action = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({request}: ActionFunctionArgs) => {
   console.log('EXECUTING_ACTION_FUNCTION______________________')
-  const { admin } = await authenticate.admin(request);
+  const {admin} = await authenticate.admin(request);
 
   const response = await admin.graphql(
-    `#graphql
-    mutation populateProduct($input: ProductInput!) {
-      productCreate(input: $input) {
-        product {
+      `#graphql
+    mutation webPixelCreate($webPixel: WebPixelInput!) {
+      webPixelCreate(webPixel: $webPixel) {
+        userErrors {
+          field
+          message
+        }
+        webPixel {
+          settings
           id
-          title
-          handle
-          status
-          variants(first: 10) {
-            edges {
-              node {
-                id
-                price
-                barcode
-                createdAt
-              }
-            }
-          }
         }
       }
-    }`,
+    }
+    `,
     {
       variables: {
-        input: {
-          title: `${color} Snowboard`,
+        webPixel: {
+          settings: {
+            "accountID": 'Account_ID_45466_this_is_as_per_toml'
+          },
         },
       },
-    },
+    }
   );
   const responseJson = await response.json();
 
@@ -74,7 +69,7 @@ export default function Index() {
 
   useEffect(() => {
   }, [shopify]);
-  const generateProduct = () => submit({}, { replace: true, method: "POST" });
+  const generateProduct = () => submit({}, {replace: true, method: "POST"});
 
   return (
     <Page>
@@ -153,7 +148,7 @@ export default function Index() {
                       borderColor="border"
                       overflowX="scroll"
                     >
-                      <pre style={{ margin: 0 }}>
+                      <pre style={{margin: 0}}>
                         <code>
                           {JSON.stringify(actionData, null, 2)}
                         </code>
