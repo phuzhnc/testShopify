@@ -30,7 +30,7 @@ export const action = async ({request}: ActionFunctionArgs) => {
   const response = await admin.graphql(
       `#graphql
     mutation webPixelCreate($webPixel: WebPixelInput!) {
-      webPixelUpdate(webPixel: $webPixel) {
+      webPixelCreate(webPixel: $webPixel) {
         userErrors {
           field
           message
